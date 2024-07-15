@@ -23,6 +23,8 @@ Example Item:
         "ready_date": "2021-01-01",
     }
 """
+import pathlib
+
 import pandas as pd
 from collections import defaultdict
 
@@ -34,7 +36,7 @@ class GeneratorError(Exception):
 
 
 class ConsolidationGenerator:
-    containers: list
+    containers: list[Container]
     items: defaultdict
     sort_key: str
     sort_reverse: bool
@@ -48,7 +50,7 @@ class ConsolidationGenerator:
         "total_weight",
     ]
 
-    CSV_PATH = ""
+    CSV_PATH = pathlib.Path("ConsolidationExample.csv").resolve()
     CSV_OUTPUT_PATH = "container_output.csv"
 
     def __init__(self, sort_key: str = None, as_csv: bool = False):
@@ -59,7 +61,7 @@ class ConsolidationGenerator:
         self.query_results = []
         self.items = defaultdict(list)
 
-    def run(self) -> list[dict]:
+    def run(self) -> list[Container]:
         self._query_data()
         self._group_results()
 

@@ -21,7 +21,7 @@ class Item:
         """Data validation"""
         for f in fields(self):
             # handle Nan/None string values
-            if f.type is not str:
+            if f.type not in (str, datetime, date):
                 continue
 
             _value = getattr(self, f.name) or ""
@@ -47,6 +47,8 @@ class Item:
         self.total_volume = self.total_volume or 0.0
         self.total_weight = self.total_weight or 0.0
 
+        self.ready_date = datetime.strptime(self.ready_date, "%m/%d/%Y")
+
     @property
     def key(self) -> tuple:
         return self.pickup_location, self.deliver_to_location
@@ -65,7 +67,7 @@ class Container:
         self.total_volume = self.item.total_volume
         self.total_weight = self.item.total_weight
         self.supplier = self.item.supplier
-        self.ready_date = item.ready_date
+        self.ready_date = self.item.ready_date
 
         self.container_items = [self.item.__dict__]
 

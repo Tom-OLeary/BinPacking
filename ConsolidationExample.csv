@@ -1,0 +1,10 @@
+pickup_location,deliver_to_location,total_volume,total_weight,supplier,ready_date
+PickupA,DeliverA,50,400,A,1/1/2024
+PickupA,DeliverA,15,200,A,1/4/2024
+PickupA,DeliverB,60,700,B,1/1/2024
+PickupB,DeliverB,25,250,B,1/1/2024
+PickupB,DeliverB,25,250,B,1/5/2024
+PickupB,DeliverB,15,150,B,1/3/2024
+PickupC,,55,550,C,1/1/2024
+,DeliverC,33,330,C,1/1/2024
+PickupC,DeliverC,50,500,C,
