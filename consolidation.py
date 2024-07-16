@@ -96,7 +96,6 @@ class ConsolidationGenerator:
         containers = [Container(*locations, item=items.pop(0))]
         for item in items:
             new_container = Container(*locations, item=item)
-            # containers = self._sorted_items(containers, new_container)
             for container in containers:
                 try:
                     container += new_container
